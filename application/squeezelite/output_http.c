@@ -588,7 +588,7 @@ static bool handle_http(struct thread_ctx_s *ctx, cache_buffer* cache, bool *use
 					send_body = false;
 					head = "HTTP/1.0 416 Range Not Satisfiable";
 					kd_free(resp);
-					kd_vadd(resp, "Content-Range", "*/%zu", cache->total);
+					kd_vadd(resp, "Content-Range", "bytes */%zu", cache->total);
 					LOG_INFO("[%p]: range cannot be satisfied %zu->%zu", ctx, offset, cache->total);
 				} else {
 					// this likely means we are being probed toward the end of the file (which we don't have)
